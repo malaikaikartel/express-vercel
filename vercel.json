@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "index.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/cron", "dest": "index.js" }
-  ],
-  "crons": [
-    {
-      "path": "/cron",
-      "schedule": "0 * * * *"
+  "functions": {
+    "api/bot.js": {
+      "runtime": "nodejs22.x"
     }
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/bot" }
   ]
 }
